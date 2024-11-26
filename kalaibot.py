@@ -154,7 +154,7 @@ def chatbot():
             st.session_state.chat_history.append({"role": "ai", "content": answer})
             
             
-            st.experimental_rerun()
+            st.rerun()
 
 # Main chatbot interface
 st.title("Kalai Safaris Virtual Assistant ")
