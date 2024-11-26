@@ -148,11 +148,10 @@ def chatbot():
                     )
                     reply = response.choices[0].message['content']
                 except Exception as e:
-                    reply = ("Error communicating with Kalai Safaris Virtual Assistant. Please try again later.")
+                    reply = (e+" Error communicating with Kalai Safaris Virtual Assistant. Please try again later.")
 
             answer = reply
             st.session_state.chat_history.append({"role": "ai", "content": answer})
-            
             
             st.rerun()
 
