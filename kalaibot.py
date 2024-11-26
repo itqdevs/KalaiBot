@@ -140,14 +140,15 @@ def chatbot():
             messages = system_instructions + [{"role": "user", "content": question}]
             reply = ""
             # OpenAI API call
-            try:
-                response = openai.ChatCompletion.create(
-                    model="openai/gpt-3.5-turbo",
-                    messages=messages,
-                )
-                reply = response.choices[0].message['content']
-            except Exception as e:
-                reply = ("Error communicating with Kalai Safaris Virtual Assistant. Please try again later.")
+            with st.spinner("Processing ...."):
+                try:
+                    response = openai.ChatCompletion.create(
+                      model="openai/gpt-3.5-turbo",
+                      messages=messages,
+                    )
+                    reply = response.choices[0].message['content']
+                except Exception as e:
+                    reply = ("Error communicating with Kalai Safaris Virtual Assistant. Please try again later.")
 
             answer = reply
             st.session_state.chat_history.append({"role": "ai", "content": answer})
